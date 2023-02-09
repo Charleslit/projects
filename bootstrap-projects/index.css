@@ -1,0 +1,14 @@
+.container-fluid{
+    background-color: #fff;
+height: 5rem;
+}
+.row{
+    background-color: #ff9232;
+    height: 4.7rem;
+}
+[class*="col-"]{
+    background-color: #00c300;
+    height: 4.2rem;
+    border: 2px rgba(0,0,0, 0.3)
+
+}
