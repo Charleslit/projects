@@ -21,4 +21,4 @@ if (balance > 0):
 elif (balance < 0):
       print("you have paid extra"    " rent for this month ")
 elif (balance == 0):
-      print("ypu have cleared rent for this month  ")
+      print("you have cleared rent for this month  ")
