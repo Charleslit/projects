@@ -3,21 +3,24 @@ from flask import Flask , render_template ,flash, redirect ,url_for
 from forms import RegistrationForm,LoginForm
 from flask_sqlalchemy import SQLAlchemy
 
+
 app = Flask(__name__)
 app.config['SECRET_KEY'] = '5161d89653efc3056cc624fd3aac9243'
-app.config['SQLALCHEMY_DATABASE_URI']= 'sqlite:///site.db'
+app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///rocket.db"
 db = SQLAlchemy(app)
+
 
 
 class User(db.Model):
      id = db.Column(db.Integer, primary_key=True)
      username = db.Column(db.String(20),unique=True, nullable= False)
      email = db.Column(db.String(20),unique=True, nullable= False)
-     image_file = db.Column(db.String(20),unique=True, nullable= False)
+     image_file = db.Column(db.String(20), nullable=False, default='default.jpg')
      password = db.Column(db.String(60), nullable= False)
      posts = db.relationship('Post',backref='author',lazy=True)
      def __repr__(self):
-          return f"User('{self.username}','{self.password}','{self.image_file}')"
+          return f"User('{self.username}','{self.password}', '{self.image_file}')"
+     
     
      
 class Post(db.Model):
@@ -77,4 +80,5 @@ def login():
 
       
 if __name__ == '__main__':
- app.run(debug=True)
+ with app.app_context():
+  app.run(debug=True)
