@@ -1,2 +1,2 @@
 # projects
-these are my personal leraning projects for personal purposes
+these are my personal learning projects for personal purposes
