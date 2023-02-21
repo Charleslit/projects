@@ -6,7 +6,7 @@ footer {
 
 }
 
-body {
+body {background-image: url(/rms/default.jpg);
     line-height: 1;
     margin: 5px;
 }
@@ -159,6 +159,11 @@ footer.footsy ul li{
     color: #fff;
     font-size: 22px;
     line-height: 1.5;
+}
+.roundend-circle{
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
 }
 /*########* mobile *##########*/
 @media screen and (max-width:680px) {
