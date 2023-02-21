@@ -25,8 +25,13 @@
             <li><a href="{{ url_for('Home')}}">home</a></li>
             <li><a href="#news">news</a></li>
             <li><a href="{{ url_for('about')}}">about</a></li>
+            {% if current_user.is_authenticated  %}
+            <li class="topnav-right"><a href="{{ url_for('account')}}" onclick="">Account</a></li>
+            <li class="topnav-right"><a href="{{ url_for('logout')}}" onclick="">logout</a></li>
+            {% else %}
             <li class="topnav-right"><a href="{{ url_for('register')}}">signup</a></li>
             <li class="topnav-right"><a href="{{ url_for('login')}}" onclick="">login</a></li>
+            {%  endif  %}
             <li class="dropdownicon"><a href="javascript:void(0)" onclick="dropdownmenu()">&#9776;</a></li>
         </ul>
     </nav>
@@ -50,16 +55,16 @@
     </main>
     <div class="container" id="sec1-gradient">
         <div class="row">
-            <div class="col-6">
+            <div class="col-5">
                 <h1 class="larger">litmus</h1>
                 <h1 class="larger">made by developers for developers</h1>
             </div>
-            <div class="col-6">
+            <div class="col-5">
                 <form>
                     <h2>username</h2>
                     <input class="inputbox" name="username" type="text" placeholder="username">
-                    <h2>password</h2>
-                    <input class="inputbox" name="password" type="password" placeholder="password">
+                    <h2>comment</h2>
+                    <input class="inputbox" name="comment" type="password" placeholder="leave your comment">
                 </form>
             </div>
 
