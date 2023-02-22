@@ -1,6 +1,6 @@
 from flask import  render_template ,flash, redirect ,url_for, request
 from rms import app, db ,bcrypt
-from rms.forms import RegistrationForm,LoginForm
+from rms.forms import RegistrationForm,LoginForm,UpdateAccountForm
 from rms.models import User, Post
 from flask_login import login_user, current_user,logout_user,login_required
 
@@ -68,5 +68,12 @@ def logout():
 @app.route('/account')
 @login_required
 def account():
+      form = UpdateAccountForm()
       image_file = url_for('static', filename='profile_pics/' + current_user.image_file)
-      return render_template('account.html', title='account',image_file=image_file ) 
+      return render_template('account.html', title='account',image_file=image_file ,
+                                        form=form, users=users) 
+@app.route('/users')
+@login_required
+def users():
+       users =  User.query.all()
+       return render_template('users.html', title='users', users=users) 
