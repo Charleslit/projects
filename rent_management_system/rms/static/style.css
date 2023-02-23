@@ -6,7 +6,9 @@ footer {
 
 }
 
-body {background-image: url(/rms/default.jpg);
+body {
+   
+    background-image: linear-gradient(rgb(37, 37, 39), rgb(190, 197, 229));
     line-height: 1;
     margin: 5px;
 }
@@ -19,7 +21,7 @@ body {background-image: url(/rms/default.jpg);
 }
 /*########custom styles*/
 #sec1-gradient{
-    background-image: linear-gradient(rgb(155, 154, 184), rgb(5, 37, 179));
+    background-image: linear-gradient(rgb(155, 154, 184), rgb(67, 72, 94));
 }
 .row{
     width: 100%;

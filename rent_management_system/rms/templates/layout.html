@@ -25,7 +25,7 @@
             <li><a href="{{ url_for('Home')}}">home</a></li>
             <li><a href="#news">news</a></li>
             <li><a href="{{ url_for('about')}}">about</a></li>
-            {% if current_user.is_authenticated  %}
+            {% if current_user.is_authenticated %}
             <li class="topnav-right"><a href="{{ url_for('new_post')}}" onclick="">new post</a></li>
             <li class="topnav-right"><a href="{{ url_for('users')}}" onclick="">users</a></li>
             <li class="topnav-right"><a href="{{ url_for('account')}}" onclick="">Account</a></li>
@@ -33,28 +33,28 @@
             {% else %}
             <li class="topnav-right"><a href="{{ url_for('register')}}">signup</a></li>
             <li class="topnav-right"><a href="{{ url_for('login')}}" onclick="">login</a></li>
-            {%  endif  %}
+            {% endif %}
             <li class="dropdownicon"><a href="javascript:void(0)" onclick="dropdownmenu()">&#9776;</a></li>
         </ul>
     </nav>
-    <main role="main" class="container"> 
-         <div class="row">
+    <main role="main" class="container">
+        <div class="row">
             <div class="col-2">
                 {% with messages = get_flashed_messages(with_categories = true) %}
-                  {% if messages %}
-                   {% for category, message in messages %}
-                     <div class="alert alert-{{category}}">
-                     {{ message }}
-                     </div>
-                   {% endfor %}
-                  {% endif %}
+                {% if messages %}
+                {% for category, message in messages %}
+                <div class="alert alert-{{category}}">
+                    {{ message }}
+                </div>
+                {% endfor %}
+                {% endif %}
                 {% endwith %}
-               
+
             </div>
         </div>
         {% block content %}
         {% endblock %}
-        
+
     </main>
     <div class="container" id="sec1-gradient">
         <div class="row">
@@ -64,7 +64,7 @@
             </div>
             <div class="col-5">
                 <form>
-                      </form>
+                </form>
             </div>
 
         </div>
@@ -78,7 +78,7 @@
         </div>
         <div class="col-7 rightside-col">
             <div>
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/UZkVqLjGM_I"
+                <iframe width="560" height="315" src="http://127.0.0.1:5000/Home"
                     title="YouTube video player" frameborder="0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                     allowfullscreen></iframe>
@@ -90,12 +90,26 @@
     <header>
         <h1 class="sec2header"> Destiny , place for awesomeness</h1>
     </header>
-    <div class="container">
+    <div class="" >
         <div class="row">
             <div class="col-3">
                 <div class="box">
                     <div class="icon">
-                        <img height="300" width="300" src="1sphere.svg" alt="sphere">
+                       <a href="{{ url_for('Home') }}"> <img class="roundend-circle  account-img_sm"
+                            src="{{ url_for('static', filename='background/kali-prompt-16x9.jpg') }}"></a>
+
+                    </div>
+                    <label> draw with us</label>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus dolore iste, ex vero
+                        molestias velit hic suscipit necessitatibus fugit. Et natus eligendi dolore ullam doloribus! In
+                        delectus assumenda et dolorem!</p>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="box">
+                    <div class="icon">
+                        <img class="roundend-circle  account-img_sm"
+                            src="{{ url_for('static', filename='background/kali-prompt-16x9.jpg') }}">
 
                     </div>
                     <label> draw with us</label>
@@ -109,7 +123,8 @@
             <div class="col-3">
                 <div class="box">
                     <div class="icon">
-                        <img height="300" width="300" src="1sphere.svg" alt="sphere">
+                        <img height="300" width="250"
+                            src="{{ url_for('static', filename='background/kali-prompt-16x9.jpg') }}">
 
                     </div>
                     <label> draw with us</label>
@@ -121,7 +136,9 @@
             <div class="col-3">
                 <div class="box">
                     <div class="icon">
-                        <img height="300" width="300" src="1sphere.svg" alt="sphere">
+                        <img height="300" width="300"
+                            src="{{ url_for('static' , filename= 'background/kali-red-sticker-16x9.jpg') }}"
+                            alt="sphere">
 
                     </div>
                     <label> draw with us</label>
@@ -131,18 +148,7 @@
                 </div>
             </div>
 
-            <div class="col-3">
-                <div class="box">
-                    <div class="icon">
-                        <img height="300px" width="30%" src="1sphere.svg" alt="sphere">
-
-                    </div>
-                    <label> draw with us</label>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus dolore iste, ex vero
-                        molestias velit hic suscipit necessitatibus fugit. Et natus eligendi dolore ullam doloribus! In
-                        delectus assumenda et dolorem!</p>
-                </div>
-            </div>
+            
         </div>
     </div>
 
@@ -163,7 +169,8 @@
             </div>
             <div class="col-4">
                 <div class="slopeicon">
-                    <img height="300px" width="500px" src="1sphere.svg">
+                    <img height="300px" width="500px"
+                        src="{{ url_for('static' , filename= 'background/kali-red-sticker-16x9.jpg') }}">
                 </div>
             </div>
         </div>
