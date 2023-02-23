@@ -161,10 +161,11 @@ footer.footsy ul li{
     line-height: 1.5;
 }
 .roundend-circle{
-    width: 300px;
-    height: 300px;
+    width: 150px;
+    height: 100px;
     border-radius: 50%;
 }
+
 /*########* mobile *##########*/
 @media screen and (max-width:680px) {
     ul.topnav li:not(:nth-child(1)){

@@ -3,31 +3,18 @@ import secrets
 from PIL import Image
 from flask import  render_template ,flash, redirect ,url_for, request
 from rms import app, db ,bcrypt
-from rms.forms import RegistrationForm,LoginForm,UpdateAccountForm
+from rms.forms import RegistrationForm,LoginForm,UpdateAccountForm, PostForm
 from rms.models import User, Post
 from flask_login import login_user, current_user,logout_user,login_required
 
-posts =[
-      {'author':'jane doue',
-      'date':'23/4/5',
-      'title':'jany',
-      'content':'first post'
-},
-{
-      'author':'james',
-      'date':'7/67/234',
-      'title':'vikings',
-      'content':'first post'
 
-}
-
-]
 
 
 @app.route("/")
 
 @app.route("/Home")
 def Home():
+      posts = Post.query.all()
       return render_template('Home.html', posts=posts)
 
 @app.route('/About')
@@ -105,3 +92,24 @@ def account():
 def users():
        users =  User.query.all()
        return render_template('users.html', title='users', users=users) 
+
+@app.route('/post/new' ,methods=['GET','POST'])
+@login_required
+def new_post():
+    form = PostForm()
+    if form.validate_on_submit():
+      post = Post(title= form.title.data, content = form.content.data, author = current_user)
+      db.session.add(post)
+      db.session.commit()
+
+      flash('your post has been created', 'success')
+      return redirect(url_for('Home'))
+    return render_template('posts.html', title='newpost' , form = form ) 
+    
+@app.route('/post/<int:post_id>')
+def post(post_id):
+        posts = Post.query.get_or_404(post_id)
+        return render_template('post.html',title=posts.title,posts=posts )
+
+
+   

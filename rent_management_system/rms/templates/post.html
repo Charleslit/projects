@@ -1,18 +1,18 @@
 {% extends "layout.html" %}
 {% block content %}
 
-{% for posts in posts %}
+
 <article class="">
     <img class="roundend-circle  account-img_sm" src="{{ url_for('static', filename='profile_pics/'+ posts.author.image_file) }}">
     <div class="">
         <div class="article">
             <a class="mr-2" href="#">{{ posts.author.username }}</a>
             <small class="text-muted">{{ posts.date_posted.strftime('%Y-%m-%d') }}</small>
-            <h2><a class="article" href="{{ url_for('post', post_id = posts.id) }}">{{ posts.title }}</a></h2>
+            <h2 class="article-content">{{ posts.title }}</h2>
             <p class=""> {{ posts.content }}</p>
         </div>
     </div>
 </article>
-{% endfor %}
+
 
 {% endblock content %}
