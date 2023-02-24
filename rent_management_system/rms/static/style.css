@@ -8,7 +8,7 @@ footer {
 
 body {
  
-    background-image: linear-gradient(rgb(37, 37, 39), rgb(190, 197, 229));
+    background-image: linear-gradient(rgb(145, 145, 214), rgb(190, 197, 229));
     line-height: 1;
     margin: 5px;
 }
@@ -21,7 +21,7 @@ body {
 }
 /*########custom styles*/
 #sec1-gradient{
-    background-image: linear-gradient(rgb(155, 154, 184), rgb(67, 72, 94));
+    background-image: linear-gradient(rgb(159, 199, 204), rgb(161, 180, 177));
 }
 .row{
     width: 100%;
@@ -166,6 +166,10 @@ footer.footsy ul li{
     width: 150px;
     height: 100px;
     border-radius: 50%;
+}
+table{
+    border: solid;
+    border-collapse: collapse;
 }
 
 /*########* mobile *##########*/

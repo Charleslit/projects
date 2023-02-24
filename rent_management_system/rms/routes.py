@@ -1,9 +1,9 @@
 import os 
 import secrets
 from PIL import Image
-from flask import  render_template ,flash, redirect ,url_for, request
+from flask import  render_template ,flash, redirect ,url_for, request, abort
 from rms import app, db ,bcrypt
-from rms.forms import RegistrationForm,LoginForm,UpdateAccountForm, PostForm
+from rms.forms import RegistrationForm,LoginForm,UpdateAccountForm, PostForm, RequestResetForm, ResetPasswordForm
 from rms.models import User, Post
 from flask_login import login_user, current_user,logout_user,login_required
 
@@ -14,7 +14,8 @@ from flask_login import login_user, current_user,logout_user,login_required
 
 @app.route("/Home")
 def Home():
-      posts = Post.query.all()
+      page = request.args.get('page',1, type= int)
+      posts = Post.query.order_by(Post.date_posted.desc()).paginate(page = page ,per_page=5)
       return render_template('Home.html', posts=posts)
 
 @app.route('/About')
@@ -104,12 +105,58 @@ def new_post():
 
       flash('your post has been created', 'success')
       return redirect(url_for('Home'))
-    return render_template('posts.html', title='newpost' , form = form ) 
+    return render_template('posts.html', title='newpost' , form = form , legend = new_post ) 
     
 @app.route('/post/<int:post_id>')
 def post(post_id):
         posts = Post.query.get_or_404(post_id)
         return render_template('post.html',title=posts.title,posts=posts )
 
+@app.route('/post/<int:post_id>/update', methods=['GET','POST'] )
+@login_required
+def update_post(post_id):
+            posts = Post.query.get_or_404(post_id)
+            if posts.author != current_user:
+             abort(403)
+            form = PostForm()
+            if form.validate_on_submit():
+                  posts.title = form.title.data
+                  posts.content = form.content.data
+                  db.session.commit()
+                  flash('your post has been updated', 'success')
+                  return redirect(url_for('post',post_id = posts.id))
+            elif request.method == 'GET':
+             
+             form.title.data =posts.title
+             form.content.data = posts.content
 
-   
+            return render_template('posts.html',title='update post',form = form, legend = update_post )
+
+@app.route('/post/<int:post_id>/delete', methods=['POST'] )
+@login_required
+def delete_post(post_id):
+      post = Post.query.get_or_404(post_id)
+      if post.author != current_user:
+            abort(403)
+      db.session.delete(post)
+      db.session.commit()
+      flash('your post has been deleted !', 'success') 
+      return redirect(url_for('Home'))     
+ 
+@app.route('/user/<username>')
+def user_posts(username):
+
+      page = request.args.get('page',1, type= int)
+      user = User.query.filter_by(username= username).first_or_404()
+      posts = Post.query.filter_by(author = user)\
+            .order_by(Post.date_posted.desc())\
+            .paginate(page = page ,per_page=5)
+      return render_template('user_posts.html', posts=posts ,user=user ) 
+
+@app.route('/reset_password' ,methods=['GET','POST'])
+def reset_request():
+      if current_user.is_authenticated:
+            return redirect(url_for('Home'))
+      form = RequestResetForm()
+      return render_template('reset_request.html' ,title='reset password ' ,form = form )      
+ 
