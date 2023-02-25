@@ -1,0 +1,214 @@
+/*###3defaults###*/
+nav,
+header,
+footer {
+    display: block;
+
+}
+
+body {
+    line-height: 1;
+    margin: 0;
+}
+.container{
+    width: 100%;
+    margin: auto;
+    padding-top: 4%;
+    padding-bottom: 4%;
+
+}
+/*########custom styles*/
+#sec1-gradient{
+    background-image: linear-gradient(rgb(155, 154, 184), rgb(5, 37, 179));
+}
+.row{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+.row::after{
+    display: table;
+    clear: both;
+    content: "";}
+.col-1{width:8.33%;}
+.col-2{width:16.22%;}
+.col-3{width:25%;}
+.col-4{width:30%;}
+.col-5{width:40%;}
+.col-6{width:50%;}
+.col-7{width:60%;}
+.col-8{width:70%}
+.col-9{width:75%;}
+.col-10{width:80%}
+.col-11{width:90%;}
+.col-12{width:100%;
+    
+}
+
+div.box{
+    margin: 24px;
+    text-align: center;
+    padding: 36 px 24px 40px 24px;
+    border-radius: 7px;
+    background-color: white;
+    box-shadow: 0 0 0 1px rgba(0,0,0,.15),0 2px 3px 0 rgba(0,0,0,.1);/*ccssmatic.com/box-shadow*/
+}
+button{
+    font-size: 32px;
+    font-weight: 700;
+    color: #fff;
+    background-color: #c91d42;
+    display: block;
+    text-align: center;
+    margin: 5px;
+    border-radius: 7px;}
+    button.learnmore{
+        display: block;
+    }
+div.icon{
+    width: 100%;
+}
+/*########nav bar*/
+nav {
+    width: 100%;
+    margin: 0%;
+
+}
+
+nav ul {
+    background-color: #eee;
+    overflow: hidden;
+    margin: 0%;
+    padding: 0%;
+}
+
+ul.topnav li {
+    list-style: none;
+    float: left;
+}
+
+ul.topnav  li.topnav-right {
+    float: right;
+}
+ul.topnav li a {
+    display: block;
+    text-decoration: none;
+    font-size: medium;
+    min-height: 16px;
+    text-align: center;
+    padding: 20px;
+    text-transform:uppercase ;
+    color: #666;
+}
+ul.topnav li a:hover
+{
+    background-color: rgb(204, 16, 32);
+    color: #fff;
+}
+ul.topnav li.dropdownicon {
+    display: none;
+
+}
+div.leftside-col{
+    margin-left:8% ;
+}
+div.rightside-col
+{
+    margin-left:8%;
+}
+h1.larger{
+    color: #fff;
+    font-size: 56px;
+    margin: 0px;
+}
+h1.sec2header{
+font: size 65px;
+text-align:centre;
+
+}
+input[type="text"]{
+    font-size: 20px;
+    width: 400px;
+    min-width: 100px;
+}
+article p{
+    padding: 0%;
+}
+div.slopeicon{
+    display: block;
+    margin: auto;
+    box-shadow: -2px -2px 5px 3px rgba(0,0,0,.15)
+    ,2px 2px 4px 2px rgba(0,0,0,.1);
+}
+footer.footsy{
+    background-color: #666;
+    padding-left: 40;
+}
+footer.footsy h1{
+    color: #c91d42;
+    font-size: 35px;
+}
+footer.footsy ul{
+    list-style: none;
+    align-items: left;
+    text-align: left;
+    padding-left: 0;
+}
+footer.footsy ul li{
+    color: #fff;
+    font-size: 22px;
+    line-height: 1.5;
+}
+/*########* mobile *##########*/
+@media screen and (max-width:680px) {
+    ul.topnav li:not(:nth-child(1)){
+        display: none;
+    }
+    ul.topnav li.dropdownicon{
+        
+        display: block;
+        float: right;
+    }
+    ul.topnav.responsive li.dropdownicon{
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+    ul.topnav.responsive{
+        position: relative;
+    }
+    ul.topnav.responsive li
+    {
+        display: inline;
+        float: none;
+    }
+    ul.topnav.responsive li a{
+        display: block;
+text-align: left;
+    }
+    div.mobilestack{
+    width: 58%;
+    margin: 0;
+    }
+    article p{
+        font-size: 25px;
+    }
+    div.slopeicon{
+        margin: 10px;
+    }
+    div.slopeicon img{
+        width: 100%;
+    }
+    div.leftside-col{
+        margin: 15px;
+    }
+    .col-7,.col-6,.col-3{
+        width: 100%;
+        margin: 0;
+    }
+    div.box{
+        padding: 5px;
+        display: block;
+    }
+}

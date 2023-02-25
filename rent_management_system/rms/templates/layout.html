@@ -22,17 +22,17 @@
 <body>
     <nav>
         <ul class="topnav" id="dropdownclick">
-            <li><a href="{{ url_for('Home')}}">home</a></li>
+            <li><a href="{{ url_for('main.Home')}}">home</a></li>
             <li><a href="#news">news</a></li>
-            <li><a href="{{ url_for('about')}}">about</a></li>
+            <li><a href="{{ url_for('main.about')}}">about</a></li>
             {% if current_user.is_authenticated %}
-            <li class="topnav-right"><a href="{{ url_for('new_post')}}" onclick="">new post</a></li>
-            <li class="topnav-right"><a href="{{ url_for('users')}}" onclick="">users</a></li>
-            <li class="topnav-right"><a href="{{ url_for('account')}}" onclick="">Account</a></li>
-            <li class="topnav-right"><a href="{{ url_for('logout')}}" onclick="">logout</a></li>
+            <li class="topnav-right"><a href="{{ url_for('posts.new_post')}}" onclick="">new post</a></li>
+            <li class="topnav-right"><a href="{{ url_for('main.users')}}" onclick="">users</a></li>
+            <li class="topnav-right"><a href="{{ url_for('users.account')}}" onclick="">Account</a></li>
+            <li class="topnav-right"><a href="{{ url_for('users.logout')}}" onclick="">logout</a></li>
             {% else %}
-            <li class="topnav-right"><a href="{{ url_for('register')}}">signup</a></li>
-            <li class="topnav-right"><a href="{{ url_for('login')}}" onclick="">login</a></li>
+            <li class="topnav-right"><a href="{{ url_for('users.register')}}">signup</a></li>
+            <li class="topnav-right"><a href="{{ url_for('users.login')}}" onclick="">login</a></li>
             {% endif %}
             <li class="dropdownicon"><a href="javascript:void(0)" onclick="dropdownmenu()">&#9776;</a></li>
         </ul>
@@ -95,7 +95,7 @@
             <div class="col-3">
                 <div class="box">
                     <div class="icon">
-                       <a href="{{ url_for('Home') }}"> <img class="roundend-circle  account-img_sm"
+                       <a href="{{ url_for('main.Home') }}"> <img class="roundend-circle  account-img_sm"
                             src="{{ url_for('static', filename='background/kali-prompt-16x9.jpg') }}"></a>
 
                     </div>

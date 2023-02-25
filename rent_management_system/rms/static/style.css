@@ -6,7 +6,9 @@ footer {
 
 }
 
-body {
+body  {
+    background-image: url("static/background/t-pyqt-pyside-analog-gauge.png");
+
  
     background-image: linear-gradient(rgb(145, 145, 214), rgb(190, 197, 229));
     line-height: 1;

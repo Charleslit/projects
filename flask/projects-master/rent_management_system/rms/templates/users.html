@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+{% block content %}
+
+users page
+<div class="content-section">
+  <div class="row">
+
+    <div class="col-3">
+      {% if users %}
+      {% for user in users %}
+
+
+      <div class="alert alert-{{user}}">
+        <table>
+          <th>tenants</th><tr>
+            <td>
+              <h1 class="larger"> {{ user.username }}</h1>
+            </td>
+          </tr>
+          
+        </table>
+      </div>
+      {% endfor %}
+      {% endif %}
+    </div>
+  </div>
+</div>
+{% endblock content %}

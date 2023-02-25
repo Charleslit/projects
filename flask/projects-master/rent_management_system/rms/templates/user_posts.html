@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+{% block content %}
+<h1 class="mb-3">Posts by {{user.username}}({{ posts.total }})</h1>
+{% for posts in posts.items %}
+<article class="">
+    <img class="roundend-circle  account-img_sm" src="{{ url_for('static', filename='profile_pics/'+ posts.author.image_file) }}">
+    <div class="">
+        <div class="article">
+            <a class="mr-2" href="{{ url_for('user_posts', username = posts.author.username) }}">{{ posts.author.username }}</a>
+            <small class="text-muted">{{ posts.date_posted.strftime('%Y-%m-%d') }}</small>
+            <h2><a class="article" href="{{ url_for('post', post_id = posts.id) }}">{{ posts.title }}</a></h2>
+            <p class=""> {{ posts.content }}</p>
+        </div>
+    </div>
+</article>
+{% endfor %}
+{% for page_num in posts.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=1) %}
+{% if page_num %}
+{% if posts.page == page_num %}
+<a  class="btn btn-ifo mb-4" href="{{ url_for('user_posts', username = user.username, page=page_num) }}">{{ page_num }}</a>
+{% else %} 
+<a  class="btn btn-outline-ifo mb-4" href="{{ url_for('user_posts',username = user.username, page=page_num) }}">{{ page_num }}</a>
+{% endif %}
+{% else %} 
+
+{% endif %}
+{% endfor %}
+{% endblock content %}
