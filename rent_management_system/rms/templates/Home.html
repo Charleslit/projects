@@ -6,7 +6,7 @@
     <img class="roundend-circle  account-img_sm" src="{{ url_for('static', filename='profile_pics/'+ posts.author.image_file) }}">
     <div class="">
         <div class="article">
-            <a class="mr-2" href="{{ url_for('posts.user_posts', username = posts.author.username) }}">{{ posts.author.username }}</a>
+            <a class="mr-2" href="{{ url_for('users.user_posts', username = posts.author.username) }}">{{ posts.author.username }}</a>
             <small class="text-muted">{{ posts.date_posted.strftime('%Y-%m-%d') }}</small>
             <h2><a class="article" href="{{ url_for('posts.post', post_id = posts.id) }}">{{ posts.title }}</a></h2>
             <p class=""> {{ posts.content }}</p>
