@@ -1,5 +1,5 @@
 from flask import Blueprint , render_template, request  
-from rms.models import Post
+from rms.models import Post, User
 
 main = Blueprint('main', __name__)
 

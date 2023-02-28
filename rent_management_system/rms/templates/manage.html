@@ -7,17 +7,17 @@
     <div class="media-body">
         <div class="media-body">
       <div class="article-metadata">
-        <a class="mr-2" href="{{ url_for('users.user_posts', username = posts.author.username) }}">{{ posts.author.username }}</a>
-        <small class="text-muted">{{ posts.date_posted.strftime('%Y-%m-%d') }}</small>
-        {% if posts.author == current_user %}
+        <a class="mr-2" href="{{ url_for('users.user_rent', name = rent_h.tenant.name) }}">{{ rent_h.tenant.name }}</a>
+        <small class="text-muted">{{ rent_h.date.strftime('%Y-%m-%d') }}</small>
+        {% if rent_h.tenant == current_user %}
           <div>
-            <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{{ url_for('posts.update_post', post_id=posts.id) }}">Update</a>
+            <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{{ url_for('users.user_rent', tenant_id=rent_h.id) }}">Update</a>
             <button type="button" class="btn btn-danger btn-sm m-1" data-toggle="modal" data-target="#deleteModal">Delete</button>
           </div>
         {% endif %}
       </div>
-      <h2 class="article-title">{{ posts.title }}</h2>
-      <p class="article-content">{{ posts.content }}</p>
+      <h2 class="article-title">{{ rent_h.name }}</h2>
+      <p class="article-content">{{ rent_h.amount }}</p>
     </div>
 </article><!-- Button trigger modal 
 <<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
@@ -29,14 +29,14 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="deleteModalLabel">Delete Post?</h5>
+          <h5 class="modal-title" id="deleteModalLabel">Delete Payment?</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <form action="{{ url_for('posts.delete_post', post_id=posts.id) }}" method="POST">
+          <form action="{{ url_for('users.pay_rent', tenant_id=rent_h.id) }}" method="POST">
             <input class="btn btn-danger" type="submit" value="Delete">
           </form>
         </div>

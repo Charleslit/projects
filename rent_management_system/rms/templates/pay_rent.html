@@ -1,0 +1,55 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div class="container" id="sec1-gradient">
+    <form method="POST" action="">
+        {{ form.hidden_tag() }}
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-4">
+                {{ legend }}
+            </legend>
+            <!--email field-->
+            <div class="form-group">
+                {{ form.amount.label }}
+                {% if form.amount.errors %}
+                {{ form.amount(class="form-control form-control-lg is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for error in form.amount.errors %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+                {% else %}
+                {{ form.amount(class=" form-control form-control-lg") }}
+                {% endif %}
+
+            </div>
+            <!--username field-->
+
+            <!--password field-->
+            <div class="form-group">
+                {{ form.name.label }}
+                {% if form.name.errors %}
+                {{ form.name(class="form-control form-control-lg is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for error in form.name.errors %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+                {% else %}
+                {{ form.name(class="form-control form-control-lg") }}
+                {% endif %}
+
+            </div>
+            <!--confirm password -->
+
+
+        </fieldset>
+        <div class="form-group">
+            {{ form.submit(class="btn btn-outline-info") }}
+
+
+         </div>
+    </form>
+
+</div>
+{% endblock content %}

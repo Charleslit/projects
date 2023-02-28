@@ -15,6 +15,7 @@ class User(db.Model, UserMixin):
      image_file = db.Column(db.String(20), nullable=False, default='default.jpg')
      password = db.Column(db.String(60), nullable= False)
      posts = db.relationship('Post',backref='author',lazy=True)
+     rent_payments = db.relationship('RentPayment', backref='tenant', lazy=True)
      
      
      def get_reset_token(self, expires_sec=1800):
@@ -41,16 +42,12 @@ class Post(db.Model):
        def __repr__(self):
             return f"User('{self.title}', '{self.date_posted}')"
        
-class Tenant(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(50), nullable=False)
-    email = db.Column(db.String(120), unique=True, nullable=False)
-    rent_payments = db.relationship('RentPayment', backref='tenant', lazy=True)
-
 class RentPayment(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     amount = db.Column(db.Float, nullable=False)
-    date = db.Column(db.Date, nullable=False)
-    tenant_id = db.Column(db.Integer, db.ForeignKey('tenant.id'), nullable=False)
-
+    name =db.Column(db.String(100), nullable=False)
+    date = db.Column(db.Date, nullable=False, default=datetime.utcnow)
+    tenant_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    def __repr__(self):
+            return f"User('{self.amount}', '{self.name}','{self.date}')"
        
