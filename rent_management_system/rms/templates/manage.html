@@ -7,7 +7,7 @@
     <div class="media-body">
         <div class="media-body">
       <div class="article-metadata">
-        <a class="mr-2" href="{{ url_for('users.user_rent', name = rent_h.tenant.name) }}">{{ rent_h.tenant.name }}</a>
+        <a class="mr-2" href="{{ url_for('users.user_rent', username = rent_h.tenant.name) }}">{{ rent_h.tenant.username }}</a>
         <small class="text-muted">{{ rent_h.date.strftime('%Y-%m-%d') }}</small>
         {% if rent_h.tenant == current_user %}
           <div>

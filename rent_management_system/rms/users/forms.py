@@ -66,10 +66,4 @@ class ResetPasswordForm(FlaskForm):
    confirm_password =  PasswordField('confirm password', 
                                     validators=[DataRequired(), EqualTo('password')])
    submit = SubmitField('reset')
-class PayRentForm(FlaskForm):
-   name = StringField('name',
-                           validators=[DataRequired(), Length(min=2, max=20)])
-   amount = StringField('amount', 
-                       validators=[DataRequired()])                     
-   
-   submit = SubmitField('pay')
+

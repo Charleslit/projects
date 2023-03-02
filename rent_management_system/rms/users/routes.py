@@ -2,7 +2,7 @@ from flask import Blueprint , render_template, url_for, flash, redirect, request
 from flask_login import login_user, current_user, logout_user, login_required
 from rms import db , bcrypt
 from rms.models import User, Post, RentPayment
-from rms.users.forms import (RegistrationForm, PayRentForm,LoginForm, UpdateAccountForm, RequestResetForm, ResetPasswordForm)
+from rms.users.forms import (RegistrationForm, LoginForm, UpdateAccountForm, RequestResetForm, ResetPasswordForm)
 from rms.users.utils import save_picture , send_reset_email
 from datetime import datetime 
 
@@ -104,17 +104,6 @@ def reset_token(token):
            return redirect(url_for('users.login'))
    
       return render_template('reset_token.html', title='Reset password' ,form = form ) 
-@users.route('/rent/new', methods=['GET', 'POST'])
-@login_required
-def pay_rent():
-    form = PayRentForm()
-    if form.validate_on_submit():
-        payment = RentPayment(amount=form.amount.data, name=form.name.data, tenant=current_user)
-        db.session.add(payment)
-        db.session.commit()
-        flash('Payment added successful!')
-        return redirect(url_for('main.Home'))
-    return render_template('pay_rent.html',title = 'pay rent',  form = form ) 
 @users.route('/tenant/<username>')
 def user_rent(username):
 
@@ -123,4 +112,4 @@ def user_rent(username):
       rent_h = RentPayment.query.filter_by(tenant = user)\
             .order_by(RentPayment.date.desc())\
             .paginate(page = page ,per_page=5)
-      return render_template('manage.html', rent_h=rent_h , user=user ) 
+      return render_template('', rent_h=rent_h , user=user ) 
