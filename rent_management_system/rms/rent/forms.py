@@ -9,3 +9,11 @@ class PayRentForm(FlaskForm):
                        validators=[DataRequired()])                     
    
    submit = SubmitField('pay')
+
+class RentForm(FlaskForm):
+   name = StringField('name',
+                           validators=[DataRequired(), Length(min=2, max=20)])
+   amount = StringField('amount', 
+                       validators=[DataRequired()])                     
+   
+   submit = SubmitField('pay')

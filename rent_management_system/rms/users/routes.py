@@ -105,11 +105,13 @@ def reset_token(token):
    
       return render_template('reset_token.html', title='Reset password' ,form = form ) 
 @users.route('/tenant/<username>')
-def user_rent(username):
+def rent():
+    # Get the current user
+    user = current_user
 
-      page = request.args.get('page',1, type= int)
-      user = User.query.filter_by(username = username).first_or_404()
-      rent_h = RentPayment.query.filter_by(tenant = user)\
-            .order_by(RentPayment.date.desc())\
-            .paginate(page = page ,per_page=5)
-      return render_template('', rent_h=rent_h , user=user ) 
+    # Calculate the total rent paid and rent balance
+    total_paid = user.get_total_rent_paid()
+    balance = user.get_rent_balance(rent_amount=1000)  # assume the rent amount is 1000
+
+    # Render the rent template with the data
+    return render_template('user_rent.html', total_paid=total_paid, balance=balance)

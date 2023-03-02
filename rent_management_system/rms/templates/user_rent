@@ -1,0 +1,6 @@
+{% extends "base.html" %}
+{% block content %}
+  <h1>{{ user.username }}'s Rent Information</h1>
+  <p>Total Rent Paid: {{ total_paid }}</p>
+  <p>Rent Balance: {{ balance }}</p>
+{% endblock %}

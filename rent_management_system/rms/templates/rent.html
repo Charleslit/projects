@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>Rent payments</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>User</th>
+        <th>Amount</th>
+        <th>Date</th>
+        <th>Balance</th>
+        <th>Total Rent Paid</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for payment in rent %}
+        <tr>
+          <td>{{ payment.id }}</td>
+          <td>{{ payment.tenant.username }}</td>
+          <td>{{ payment.amount }}</td>
+          <td>{{ payment.date }}</td>
+          <td>{{ balance }}</td>
+          <td>{{ total_paid }} </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}
