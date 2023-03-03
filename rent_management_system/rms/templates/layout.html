@@ -12,9 +12,9 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         {% if title %}
-        <title> flask blog -{{ title }}</title>
+        <title> RENT -{{ title }}</title>
         {% else %}
-        <title> flask blog </title>
+        <title> lit REnTMs </title>
         {% endif %}
     </head>
 </head>
@@ -23,7 +23,8 @@
     <nav>
         <ul class="topnav" id="dropdownclick">
             <li><a href="{{ url_for('main.Home')}}">home</a></li>
-            <li><a href="{{ url_for('users.user_rent') }}">Manage</a></li>
+            <li><a href="{{ url_for('main.rent')}}">Manage</a></li>
+           
             <li><a href="{{ url_for('main.about')}}">about</a></li>
             {% if current_user.is_authenticated %}
             <li class="topnav-right"><a href="{{ url_for('posts.new_post')}}" onclick="">new post</a></li>
@@ -78,7 +79,7 @@
         </div>
         <div class="col-7 rightside-col">
             <div>
-                <iframe width="560" height="315" src="http://127.0.0.1:5000/Home"
+                <iframe width="560" height="315" src="http://127.0.0.1:5000//rent/new"
                     title="YouTube video player" frameborder="0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                     allowfullscreen></iframe>
@@ -90,7 +91,7 @@
     <header>
         <h1 class="sec2header"> Destiny , place for awesomeness</h1>
     </header>
-    <div class="" >
+    <div class=" Destiny" >
         <div class="row">
             <div class="col-3">
                 <div class="box">

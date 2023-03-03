@@ -15,10 +15,11 @@ login_manager.login_view = 'users.login'
 login_manager.login_message_category ='info'
 mail = Mail(app)
 
-
+from rms.rent.routes import rent
 from rms.users.routes import users
 from rms.posts.routes import posts
 from rms.main.routes import main
+app.register_blueprint(rent)
 app.register_blueprint(users)
 app.register_blueprint(posts)
 app.register_blueprint(main)

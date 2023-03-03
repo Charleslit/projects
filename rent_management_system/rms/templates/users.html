@@ -1,28 +1,21 @@
+
 {% extends "layout.html" %}
+
 {% block content %}
-
-users page
-<div class="content-section">
-  <div class="row">
-
-    <div class="col-3">
-      {% if users %}
-      {% for user in users %}
-
-
-      <div class="alert alert-{{user}}">
-        <table>
-          <th>tenants</th><tr>
-            <td>
-              <h1 class="larger"> {{ user.username }}</h1>
-            </td>
-          </tr>
-          
-        </table>
+  <div class="content-section">
+    <div class="row">
+      <div class="col-3">
+        {% if users %}
+          <ul class="list-group">
+            {% for user in users %}
+              <li class="list-group-item">
+                <h5>{{ user.username }}</h5>
+                <p>{{ user.email }}</p>
+              </li>
+            {% endfor %}
+          </ul>
+        {% endif %}
       </div>
-      {% endfor %}
-      {% endif %}
     </div>
   </div>
-</div>
 {% endblock content %}

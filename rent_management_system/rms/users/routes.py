@@ -2,7 +2,7 @@ from flask import Blueprint , render_template, url_for, flash, redirect, request
 from flask_login import login_user, current_user, logout_user, login_required
 from rms import db , bcrypt
 from rms.models import User, Post, RentPayment
-from rms.users.forms import (RegistrationForm, PayRentForm,LoginForm, UpdateAccountForm, RequestResetForm, ResetPasswordForm)
+from rms.users.forms import (RegistrationForm, LoginForm, UpdateAccountForm, RequestResetForm, ResetPasswordForm)
 from rms.users.utils import save_picture , send_reset_email
 from datetime import datetime 
 
@@ -104,23 +104,20 @@ def reset_token(token):
            return redirect(url_for('users.login'))
    
       return render_template('reset_token.html', title='Reset password' ,form = form ) 
-@users.route('/rent/new', methods=['GET', 'POST'])
+@users.route('/tenant')
 @login_required
-def pay_rent():
-    form = PayRentForm()
-    if form.validate_on_submit():
-        payment = RentPayment(amount=form.amount.data, name=form.name.data, tenant=current_user)
-        db.session.add(payment)
-        db.session.commit()
-        flash('Payment added successful!')
-        return redirect(url_for('main.Home'))
-    return render_template('pay_rent.html',title = 'pay rent',  form = form ) 
-@users.route('/tenant/<username>')
-def user_rent(username):
+def rent():
+    # Get the current user
+    user = current_user
 
-      page = request.args.get('page',1, type= int)
-      user = User.query.filter_by(username = username).first_or_404()
-      rent_h = RentPayment.query.filter_by(tenant = user)\
-            .order_by(RentPayment.date.desc())\
-            .paginate(page = page ,per_page=5)
-      return render_template('manage.html', rent_h=rent_h , user=user ) 
+    # Get the most recent rent payment for the user
+    latest_rent_payment = RentPayment.query.filter_by(tenant_id=user.id).order_by(RentPayment.date.desc()).first()
+
+    # Calculate the total rent paid and rent balance
+    total_paid = user.get_total_rent_paid()
+    rent_amount = latest_rent_payment.amount if latest_rent_payment else 000  # default rent amount
+    balance = user.get_rent_balance(rent_amount=rent_amount)
+
+    # Render the rent template with the data
+    return render_template('user_rent.html', total_paid=total_paid, balance=balance, user=user)
+

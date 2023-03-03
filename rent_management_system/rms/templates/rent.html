@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Rent Information</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>User</th>
+                <th>Latest Rent Payment</th>
+                <th>Balance</th>
+                <th>Total Rent Paid</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for rent_data in rent_info %}
+                <tr>
+                    <td>{{ rent_data['user'].username }}</td>
+                    {% if rent_data['latest_rent_payment'] %}
+                        <td>{{ rent_data['latest_rent_payment'].amount }}</td>
+                    {% else %}
+                        <td>No rent payments found.</td>
+                    {% endif %}
+                    <td>{{ rent_data['balance'] }}</td>
+                    <td>{{ rent_data['total_rent_paid'] }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
+
+
