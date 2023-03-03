@@ -16,7 +16,7 @@ def add_rent():
         db.session.commit()
 
         flash('Your payment has been added successfully!', 'success')
-        return redirect(url_for('main.home'))
+        return redirect(url_for('main.rent'))
 
     return render_template('pay_rent.html', title='Add Rent Payment', form=form)
 
