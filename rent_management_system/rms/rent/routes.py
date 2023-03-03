@@ -28,10 +28,7 @@ def manage_rent(rent_payment_id):
     if rent_payment.tenant != current_user:
         abort(403)
         
-    user = current_user
-    # Calculate the total rent paid and rent balance
-    total_paid = user.get_total_rent_paid()
-    balance = user.get_rent_balance(rent_amount=1000)  # assume the rent amount is 1000
+
 
     return render_template('manage.html', title='Manage Rent Payment', rent_payment=rent_payment , total_paid=total_paid, balance=balance)
 

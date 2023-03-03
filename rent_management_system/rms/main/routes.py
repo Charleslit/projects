@@ -19,7 +19,14 @@ def users():
     users = User.query.all()
     return render_template('users.html', title='users', users=users)
 
+
 @main.route('/rent')
 def rent():
-    rent = RentPayment.query.order_by(RentPayment.date.desc())
-    return render_template('rent.html', title='rent', rent=rent)
+    users = User.query.all()
+    rent_info = []
+    for user in users:
+        latest_rent_payment = RentPayment.query.filter_by(tenant_id=user.id).order_by(RentPayment.date.desc()).first()
+        balance = user.get_rent_balance(rent_amount=latest_rent_payment.amount if latest_rent_payment else 0)
+        total_rent_paid = user.get_total_rent_paid()
+        rent_info.append({'user': user, 'latest_rent_payment': latest_rent_payment, 'balance':balance,'total_rent_paid': total_rent_paid})
+    return render_template('rent.html', title='Rent', rent_info=rent_info)
