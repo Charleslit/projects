@@ -25,6 +25,13 @@ body  {
 #sec1-gradient{
     background-image: linear-gradient(rgb(159, 199, 204), rgb(161, 180, 177));
 }
+.Destiny{ 
+    background-image: url("/static/background/th-3718961554.jpeg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: scroll;
+    background-size: 95% 90%;
+}
 .row{
     width: 100%;
     display: flex;
