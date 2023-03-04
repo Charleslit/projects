@@ -32,8 +32,10 @@
             <li class="topnav-right"><a href="{{ url_for('users.account')}}" onclick="">Account</a></li>
             <li class="topnav-right"><a href="{{ url_for('users.logout')}}" onclick="">logout</a></li>
             {% else %}
-            <li class="topnav-right"><a href="{{ url_for('users.register')}}">signup</a></li>
-            <li class="topnav-right"><a href="{{ url_for('users.login')}}" onclick="">login</a></li>
+            <li class="topnav-right"><a href="{{ url_for('users.register')}}"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+            <li class="topnav-right"><a href="{{ url_for('users.login')}}" onclick=""><span class="glyphicon glyphicon-log-in"></span>login</a></li>
+           
+     
             {% endif %}
             <li class="dropdownicon"><a href="javascript:void(0)" onclick="dropdownmenu()">&#9776;</a></li>
         </ul>
