@@ -74,6 +74,9 @@ div.box{
     background-color: white;
     box-shadow: 0 0 0 1px rgba(126, 123, 123, 0.15),0 2px 3px 0 rgba(0,0,0,.1);/*ccssmatic.com/box-shadow*/
 }
+ .img:hover{
+    scale: 1.1;
+ }
 button{
     font-size: 32px;
     font-weight: 700;

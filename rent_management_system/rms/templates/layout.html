@@ -31,10 +31,12 @@
             <li class="topnav-right"><a href="{{ url_for('users.account')}}" onclick="">Account</a></li>
             <li class="topnav-right"><a href="{{ url_for('users.logout')}}" onclick="">logout</a></li>
             {% else %}
-            <li class="topnav-right"><a href="{{ url_for('users.register')}}"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-            <li class="topnav-right"><a href="{{ url_for('users.login')}}" onclick=""><span class="glyphicon glyphicon-log-in"></span>login</a></li>
-           
-     
+            <li class="topnav-right"><a href="{{ url_for('users.register')}}"><span
+                        class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+            <li class="topnav-right"><a href="{{ url_for('users.login')}}" onclick=""><span
+                        class="glyphicon glyphicon-log-in"></span>login</a></li>
+
+
             {% endif %}
             <li class="dropdownicon"><a href="javascript:void(0)" onclick="dropdownmenu()">&#9776;</a></li>
         </ul>
@@ -54,7 +56,7 @@
 
             </div>
         </div>
-        
+
 
     </main>
     <div class="container">
@@ -66,7 +68,9 @@
             <div class="col-5">
                 <h1 class="larger">litmus</h1>
                 <h1 class="larger">rent app</h1>
-                <p1>The Rent App is a simple Flask web application that allows users to keep track of their rent payments. It provides basic rent management functionalities and can be easily extended to support more advanced features</p1>
+                <p1>The Rent App is a simple Flask web application that allows users to keep track of their rent
+                    payments. It provides basic rent management functionalities and can be easily extended to support
+                    more advanced features</p1>
             </div>
             <div class="col-5">
                 <form>
@@ -76,16 +80,20 @@
         </div>
     </div>
     <div class="row" id="sec1-gradient">
-        <div class="col-1 leftside-col">
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Non, ex dicta. Rerum, recusandae temporibus! Non
-            cupiditate ratione nostrum quisquam voluptas beatae molestiae totam illo ea. Sapiente aliquid animi ipsa
-            quam.
+        <div class="col-3 leftside-col">
+            To run the Rent App, follow these steps:<br>
 
+            Clone the repository from GitHub.<br>
+            Create a virtual environment and activate it.<br>
+            Install the required dependencies using the command pip install -r requirements.txt.<br>
+            Set the environment variable FLASK_APP to run.py.<br>
+            Initialize the database using the command flask db upgrade.<br>
+            Start the server using the command flask run
         </div>
-        <div class="col-7 rightside-col">
+        <div class="col-6 rightside-col">
             <div>
-                <iframe width="560" height="315" src="http://127.0.0.1:5000//rent/new"
-                    title="YouTube video player" frameborder="0"
+                <iframe width="560" height="315" src="http://127.0.0.1:5000//rent/new" title="YouTube video player"
+                    frameborder="0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                     allowfullscreen></iframe>
 
@@ -96,65 +104,77 @@
     <header>
         <h1 class="sec2header"> Destiny , place for awesomeness</h1>
     </header>
-    <div class=" Destiny" >
+    <div class=" Destiny">
         <div class="row">
             <div class="col-3">
-                <div class="box">
-                    <div class="icon">
-                       <a href="{{ url_for('main.Home') }}"> <img class="roundend-circle  account-img_sm"
-                            src="{{ url_for('static', filename='background/kali-prompt-16x9.jpg') }}"></a>
+                <a href="#">
+                    <div class="box  img">
+                        <div class="icon">
+                            <a href="{{ url_for('main.Home') }}"> <img class="roundend-circle  account-img_sm"
+                                    src="{{ url_for('static', filename='background/kali-prompt-16x9.jpg') }}"></a>
 
+                        </div>
+                        <label> STAY WITH US</label>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus dolore iste, ex vero
+                            molestias velit hic suscipit necessitatibus fugit. Et natus eligendi dolore ullam doloribus!
+                            In
+                            delectus assumenda et dolorem!</p>
                     </div>
-                    <label> draw with us</label>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus dolore iste, ex vero
-                        molestias velit hic suscipit necessitatibus fugit. Et natus eligendi dolore ullam doloribus! In
-                        delectus assumenda et dolorem!</p>
-                </div>
+                </a>
             </div>
             <div class="col-3">
-                <div class="box">
-                    <div class="icon">
-                        <img class="roundend-circle  account-img_sm"
-                            src="{{ url_for('static', filename='background/kali-prompt-16x9.jpg') }}">
+                <a href="#">
+                    <div class="box img">
+                        <div class="icon">
+                            <img class="roundend-circle  account-img_sm"
+                                src="{{ url_for('static', filename='background/kali-prompt-16x9.jpg') }}">
 
+                        </div>
+                        <label> draw with us</label>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus dolore iste, ex vero
+                            molestias velit hic suscipit necessitatibus fugit. Et natus eligendi dolore ullam doloribus!
+                            In
+                            delectus assumenda et dolorem!</p>
                     </div>
-                    <label> draw with us</label>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus dolore iste, ex vero
-                        molestias velit hic suscipit necessitatibus fugit. Et natus eligendi dolore ullam doloribus! In
-                        delectus assumenda et dolorem!</p>
-                </div>
+                </a>
             </div>
 
 
             <div class="col-3">
-                <div class="box">
-                    <div class="icon">
-                        <img height="300" width="250"
-                            src="{{ url_for('static', filename='background/kali-prompt-16x9.jpg') }}">
+                <a href="#">
+                    <div class="box img">
+                        <div class="icon ">
+                            <img height="250" width="300"
+                                src="{{ url_for('static', filename='background/kali-prompt-16x9.jpg') }}">
 
+                        </div>
+                        <label> draw with us</label>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus dolore iste, ex vero
+                            molestias velit hic suscipit necessitatibus fugit. Et natus eligendi dolore ullam doloribus!
+                            In
+                            delectus assumenda et dolorem!</p>
                     </div>
-                    <label> draw with us</label>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus dolore iste, ex vero
-                        molestias velit hic suscipit necessitatibus fugit. Et natus eligendi dolore ullam doloribus! In
-                        delectus assumenda et dolorem!</p>
-                </div>
+                </a>
             </div>
             <div class="col-3">
-                <div class="box">
-                    <div class="icon">
-                        <img height="300" width="300"
-                            src="{{ url_for('static' , filename= 'background/kali-red-sticker-16x9.jpg') }}"
-                            alt="sphere">
+                <a href="#">
+                    <div class="box img">
+                        <div class="icon">
+                            <img height="250" width="300"
+                                src="{{ url_for('static' , filename= 'background/kali-red-sticker-16x9.jpg') }}"
+                                alt="sphere">
 
+                        </div>
+                        <label> draw with us</label>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus dolore iste, ex vero
+                            molestias velit hic suscipit necessitatibus fugit. Et natus eligendi dolore ullam doloribus!
+                            In
+                            delectus assumenda et dolorem!</p>
                     </div>
-                    <label> draw with us</label>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus dolore iste, ex vero
-                        molestias velit hic suscipit necessitatibus fugit. Et natus eligendi dolore ullam doloribus! In
-                        delectus assumenda et dolorem!</p>
-                </div>
+                </a>
             </div>
 
-            
+
         </div>
     </div>
 
@@ -166,7 +186,7 @@
     <hr>
     <div class="container">
         <div class="row">
-            <div class="col-7">
+            <div class="col-7 img">
                 <article>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod excepturi nulla minus sunt qui
                         ratione temporibus, illo placeat deserunt dolorem quibusdam quae nostrum aperiam eius ab veniam
@@ -175,8 +195,7 @@
             </div>
             <div class="col-4">
                 <div class="slopeicon">
-                    <img height="300px" width="500px"
-                        src="{{ url_for('static' , filename= 'background/kali-red-sticker-16x9.jpg') }}">
+                    <img src="{{ url_for('static' , filename= 'background/kali-red-sticker-16x9.jpg') }}">
                 </div>
             </div>
         </div>
