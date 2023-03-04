@@ -10,7 +10,7 @@ body  {
     
     
     background-image: url("/static/background/nightly.jpeg") ;
-    background-image: linear-gradient(rgb(206, 206, 236), rgb(181, 184, 182));
+    background-image: linear-gradient(rgb(255, 255, 255), rgb(233, 233, 233));
   
     line-height: 1;
     margin: 5px;
@@ -21,6 +21,14 @@ body  {
     padding-top: 4%;
     padding-bottom: 4%;
 
+}
+.containerf{
+    width: 70%;
+    margin: 10px;
+    padding-top: 4%;
+    padding-bottom: 4%;
+    border-radius: 2%;
+   
 }
 /*########custom styles*/
 #sec1-gradient{
@@ -64,7 +72,7 @@ div.box{
     padding: 36 px 24px 40px 24px;
     border-radius: 7px;
     background-color: white;
-    box-shadow: 0 0 0 1px rgba(0,0,0,.15),0 2px 3px 0 rgba(0,0,0,.1);/*ccssmatic.com/box-shadow*/
+    box-shadow: 0 0 0 1px rgba(126, 123, 123, 0.15),0 2px 3px 0 rgba(0,0,0,.1);/*ccssmatic.com/box-shadow*/
 }
 button{
     font-size: 32px;

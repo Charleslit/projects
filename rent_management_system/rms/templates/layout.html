@@ -23,17 +23,18 @@
     <nav>
         <ul class="topnav" id="dropdownclick">
             <li><a href="{{ url_for('main.Home')}}">home</a></li>
-            
+            <li><a href="{{ url_for('main.rent')}}">Manage</a></li>
             <li><a href="{{ url_for('main.about')}}">about</a></li>
             {% if current_user.is_authenticated %}
-            <li><a href="{{ url_for('main.rent')}}">Manage</a></li>
             <li class="topnav-right"><a href="{{ url_for('posts.new_post')}}" onclick="">new post</a></li>
             <li class="topnav-right"><a href="{{ url_for('main.users')}}" onclick="">users</a></li>
             <li class="topnav-right"><a href="{{ url_for('users.account')}}" onclick="">Account</a></li>
             <li class="topnav-right"><a href="{{ url_for('users.logout')}}" onclick="">logout</a></li>
             {% else %}
-            <li class="topnav-right"><a href="{{ url_for('users.register')}}">signup</a></li>
-            <li class="topnav-right"><a href="{{ url_for('users.login')}}" onclick="">login</a></li>
+            <li class="topnav-right"><a href="{{ url_for('users.register')}}"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+            <li class="topnav-right"><a href="{{ url_for('users.login')}}" onclick=""><span class="glyphicon glyphicon-log-in"></span>login</a></li>
+           
+     
             {% endif %}
             <li class="dropdownicon"><a href="javascript:void(0)" onclick="dropdownmenu()">&#9776;</a></li>
         </ul>
@@ -53,15 +54,19 @@
 
             </div>
         </div>
-        {% block content %}
-        {% endblock %}
+        
 
     </main>
+    <div class="container">
+        {% block content %}
+        {% endblock %}
+    </div>
     <div class="container" id="sec1-gradient">
         <div class="row">
             <div class="col-5">
                 <h1 class="larger">litmus</h1>
-                <h1 class="larger">made by developers for developers</h1>
+                <h1 class="larger">rent app</h1>
+                <p1>The Rent App is a simple Flask web application that allows users to keep track of their rent payments. It provides basic rent management functionalities and can be easily extended to support more advanced features</p1>
             </div>
             <div class="col-5">
                 <form>
