@@ -7,10 +7,11 @@ footer {
 }
 
 body  {
-    background-image: url("static/background/t-pyqt-pyside-analog-gauge.png");
-
- 
-    background-image: linear-gradient(rgb(145, 145, 214), rgb(190, 197, 229));
+    
+    
+    background-image: url("/static/background/nightly.jpeg") ;
+    background-image: linear-gradient(rgb(206, 206, 236), rgb(181, 184, 182));
+  
     line-height: 1;
     margin: 5px;
 }

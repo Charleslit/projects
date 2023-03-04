@@ -41,7 +41,7 @@ class User(db.Model, UserMixin):
     def get_rent_balance(self, rent_amount):
         """Return the balance of rent owed by the user."""
         total_paid = self.get_total_rent_paid()
-        balance = rent_amount - total_paid
+        balance = rent_amount - 5000
         return balance
     def __repr__(self):
         return f"User('{self.username}', '{self.email}', '{self.image_file}')"

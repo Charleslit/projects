@@ -1,5 +1,26 @@
-{% extends "layout.html" %}
-{% block content %}
+{% extends "base.html" %}
 
-    About page
-{% endblock content %}
+{% block content %}
+    <h1>Rent Information</h1>
+    <table>
+        <thead>
+            <tr>
+                {% if users %}
+                <th>Name</th>
+                {% for user in users %}
+               
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{ users }}</td>
+              
+                {% endfor %}
+                {% else %}
+                <td>N/A</td>
+                <td>N/A</td>
+                {% endif %}
+                <td>{{ balance }}</td>
+            </tr>
+        </tbody>
+    </table>
+{% endblock %}

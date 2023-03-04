@@ -12,7 +12,8 @@ def Home():
 
 @main.route('/About')
 def about():
-    return render_template('About.html', title='About')
+    users = RentPayment.query.all()
+    return render_template('About.html', title='About', users = users)
 
 @main.route('/users')
 def users():

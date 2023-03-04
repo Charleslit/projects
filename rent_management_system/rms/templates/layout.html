@@ -23,10 +23,10 @@
     <nav>
         <ul class="topnav" id="dropdownclick">
             <li><a href="{{ url_for('main.Home')}}">home</a></li>
-            <li><a href="{{ url_for('main.rent')}}">Manage</a></li>
-           
+            
             <li><a href="{{ url_for('main.about')}}">about</a></li>
             {% if current_user.is_authenticated %}
+            <li><a href="{{ url_for('main.rent')}}">Manage</a></li>
             <li class="topnav-right"><a href="{{ url_for('posts.new_post')}}" onclick="">new post</a></li>
             <li class="topnav-right"><a href="{{ url_for('main.users')}}" onclick="">users</a></li>
             <li class="topnav-right"><a href="{{ url_for('users.account')}}" onclick="">Account</a></li>
