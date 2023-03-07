@@ -14,6 +14,7 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(20), unique=True, nullable=False)
     image_file = db.Column(db.String(20), nullable=False, default='default.jpg')
     password = db.Column(db.String(60), nullable=False)
+    balance = db.Column(db.Float, nullable=False, default=0.0)
     posts = db.relationship('Post', backref='author', lazy=True)
     rent_payments = db.relationship('RentPayment', backref='tenant', lazy=True)
 
@@ -30,6 +31,33 @@ class User(db.Model, UserMixin):
         except:
             return None
         return User.query.get(user_id)
+   
+    # ...
+    def make_payment(self, amount):
+        if amount > self.balance:
+            raise ValueError('Payment amount exceeds balance')
+        self.balance -= amount
+        db.session.commit()
+
+    def get_rent_balance(self, rent_amount):
+        """Return the balance of rent owed by the user for the current month."""
+        now = datetime.utcnow()
+        month = now.month
+        year = now.year
+        rent_payments = [p for p in self.rent_payments if p.date.month == month and p.date.year == year]
+        total_paid = sum(payment.amount for payment in rent_payments)
+        balance = rent_amount - total_paid
+        return balance
+
+    def pay_rent(self, rent_amount):
+        """Pay the rent for the current month."""
+        balance = self.get_rent_balance(rent_amount)
+        if balance <= 0:
+            raise ValueError('Rent already paid')
+        self.make_payment(balance)
+        payment = RentPayment(amount=balance, name='Rent', date=datetime.utcnow(), tenant=self)
+        db.session.add(payment)
+        db.session.commit()
 
     def get_total_rent_paid(self):
         """Return the total amount of rent paid by the user."""
@@ -37,12 +65,7 @@ class User(db.Model, UserMixin):
         for payment in self.rent_payments:
             total += payment.amount
         return total
-
-    def get_rent_balance(self, rent_amount):
-        """Return the balance of rent owed by the user."""
-        total_paid = self.get_total_rent_paid()
-        balance = rent_amount - 5000
-        return balance
+   
     def __repr__(self):
         return f"User('{self.username}', '{self.email}', '{self.image_file}')"
 class Post(db.Model):
@@ -67,3 +90,11 @@ class RentPayment(db.Model):
 
     def __repr__(self):
         return f"RentPayment('{self.amount}', '{self.name}', '{self.date}')"
+
+
+
+
+
+    # ...
+
+   

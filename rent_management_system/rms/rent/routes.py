@@ -65,4 +65,4 @@ def delete_rent(rent_payment_id):
     db.session.commit()
 
     flash('Your payment has been deleted successfully!', 'success')
-    return redirect(url_for('main.home'))
+    return redirect(url_for('main.Home'))
