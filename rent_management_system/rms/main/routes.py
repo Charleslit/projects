@@ -30,3 +30,7 @@ def rent():
         total_rent_paid = user.get_total_rent_paid()
         rent_info.append({'user': user, 'latest_rent_payment': latest_rent_payment, 'balance':balance,'total_rent_paid': total_rent_paid})
     return render_template('rent.html', title='Rent', rent_info=rent_info)
+@main.route('/rooms')
+def rooms():
+    rooms = Room.query.all()
+    return render_template('rooms.html', rooms=rooms)

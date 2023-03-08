@@ -16,6 +16,7 @@ class User(db.Model, UserMixin):
     password = db.Column(db.String(60), nullable=False)
     posts = db.relationship('Post', backref='author', lazy=True)
     rent_payments = db.relationship('RentPayment', backref='tenant', lazy=True)
+    bookings = db.relationship('Booking', backref='tenant', lazy=True)
 
     def get_reset_token(self, expires_sec=1800):
         serializer = Serializer(app.config['SECRET_KEY'])
@@ -43,8 +44,10 @@ class User(db.Model, UserMixin):
         total_paid = self.get_total_rent_paid()
         balance = rent_amount - total_paid
         return balance
+
     def __repr__(self):
         return f"User('{self.username}', '{self.email}', '{self.image_file}')"
+
 class Post(db.Model):
      id = db.Column(db.Integer, primary_key=True)
      title = db.Column(db.String(100), nullable=False)
@@ -67,3 +70,16 @@ class RentPayment(db.Model):
 
     def __repr__(self):
         return f"RentPayment('{self.amount}', '{self.name}', '{self.date}')"
+
+class Room(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    room_number = db.Column(db.Integer, nullable=False)
+    status = db.Column(db.String(20), nullable=False, default='Vacant')
+    bookings = db.relationship('Booking', backref='room', lazy=True)
+class Booking(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    start_date = db.Column(db.Date, nullable=False)
+    end_date = db.Column(db.Date, nullable=False)
+    room_id = db.Column(db.Integer, db.ForeignKey('room.id'), nullable=False)
+    tenant_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+

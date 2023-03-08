@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+  <h1>Rooms</h1>
+  <p>Currently occupied rooms: {{ occupied_count }}</p>
+  <p>Currently vacant rooms: {{ vacant_count }}</p>
+  <p>Currently booked rooms: {{ booked_count }}</p>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Room Number</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for room in rooms %}
+        <tr>
+          <td>{{ room.room_number }}</td>
+          <td>{{ room.status }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}
