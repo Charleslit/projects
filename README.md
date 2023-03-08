@@ -1,6 +1,7 @@
 Rent App Documentation
 
 The Rent App is a simple Flask web application that allows users to keep track of their rent payments. The application has the following features:
+
 User Authentication
 
 The Rent App supports user authentication, which allows users to create an account, log in, and log out. User authentication is implemented using the Flask-Login extension.
