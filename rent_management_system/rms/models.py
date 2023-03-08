@@ -17,6 +17,7 @@ class User(db.Model, UserMixin):
     balance = db.Column(db.Float, nullable=False, default=0.0)
     posts = db.relationship('Post', backref='author', lazy=True)
     rent_payments = db.relationship('RentPayment', backref='tenant', lazy=True)
+    bookings = db.relationship('Booking', backref='tenant', lazy=True)
 
     def get_reset_token(self, expires_sec=1800):
         serializer = Serializer(app.config['SECRET_KEY'])
@@ -65,9 +66,15 @@ class User(db.Model, UserMixin):
         for payment in self.rent_payments:
             total += payment.amount
         return total
-   
+
+    def get_rent_balance(self, rent_amount):
+        """Return the balance of rent owed by the user."""
+        total_paid = self.get_total_rent_paid()
+        balance = rent_amount - total_paid
+        return balance
     def __repr__(self):
         return f"User('{self.username}', '{self.email}', '{self.image_file}')"
+
 class Post(db.Model):
      id = db.Column(db.Integer, primary_key=True)
      title = db.Column(db.String(100), nullable=False)
@@ -90,11 +97,3 @@ class RentPayment(db.Model):
 
     def __repr__(self):
         return f"RentPayment('{self.amount}', '{self.name}', '{self.date}')"
-
-
-
-
-
-    # ...
-
-   
