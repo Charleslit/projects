@@ -46,7 +46,7 @@ class User(db.Model, UserMixin):
         year = now.year
         rent_payments = [p for p in self.rent_payments if p.date.month == month and p.date.year == year]
         total_paid = sum(payment.amount for payment in rent_payments)
-        balance = rent_amount - total_paid
+        balance = rent_amount - 5000
         return balance
 
     def pay_rent(self, rent_amount):
