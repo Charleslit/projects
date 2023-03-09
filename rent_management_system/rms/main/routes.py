@@ -12,13 +12,19 @@ def Home():
 
 @main.route('/About')
 def about():
-    return render_template('About.html', title='About')
+    users = RentPayment.query.all()
+    return render_template('About.html', title='About', users = users)
 
 @main.route('/users')
 def users():
     users = User.query.all()
     return render_template('users.html', title='users', users=users)
-
+@main.route('/manage')
+def manage():
+    
+    rent_h = RentPayment.query.all()
+    return render_template('manage.html', rent_h=rent_h)
+  
 
 @main.route('/rent')
 def rent():
