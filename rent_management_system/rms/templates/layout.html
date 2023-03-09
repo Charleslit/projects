@@ -24,7 +24,7 @@
         <ul class="topnav" id="dropdownclick">
             <li><a href="{{ url_for('main.Home')}}">home</a></li>
             <li><a href="{{ url_for('main.rent')}}">Manage</a></li>
-           
+
             <li><a href="{{ url_for('main.about')}}">about</a></li>
             {% if current_user.is_authenticated %}
             <li class="topnav-right"><a href="{{ url_for('posts.new_post')}}" onclick="">new post</a></li>
@@ -32,10 +32,12 @@
             <li class="topnav-right"><a href="{{ url_for('users.account')}}" onclick="">Account</a></li>
             <li class="topnav-right"><a href="{{ url_for('users.logout')}}" onclick="">logout</a></li>
             {% else %}
-            <li class="topnav-right"><a href="{{ url_for('users.register')}}"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-            <li class="topnav-right"><a href="{{ url_for('users.login')}}" onclick=""><span class="glyphicon glyphicon-log-in"></span>login</a></li>
-           
-     
+            <li class="topnav-right"><a href="{{ url_for('users.register')}}"><span
+                        class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+            <li class="topnav-right"><a href="{{ url_for('users.login')}}" onclick=""><span
+                        class="glyphicon glyphicon-log-in"></span>login</a></li>
+
+
             {% endif %}
             <li class="dropdownicon"><a href="javascript:void(0)" onclick="dropdownmenu()">&#9776;</a></li>
         </ul>
@@ -81,8 +83,8 @@
         </div>
         <div class="col-7 rightside-col">
             <div>
-                <iframe width="560" height="315" src="http://127.0.0.1:5000//rent/new"
-                    title="YouTube video player" frameborder="0"
+                <iframe width="560" height="315" src="http://127.0.0.1:5000//rent/new" title="YouTube video player"
+                    frameborder="0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                     allowfullscreen></iframe>
 
@@ -93,13 +95,13 @@
     <header>
         <h1 class="sec2header"> Destiny , place for awesomeness</h1>
     </header>
-    <div class=" Destiny" >
+    <div class=" Destiny">
         <div class="row">
             <div class="col-3">
                 <div class="box">
                     <div class="icon">
-                       <a href="{{ url_for('main.Home') }}"> <img class="roundend-circle  account-img_sm"
-                            src="{{ url_for('static', filename='background/kali-prompt-16x9.jpg') }}"></a>
+                        <a href="{{ url_for('main.Home') }}"> <img class="roundend-circle  account-img_sm"
+                                src="{{ url_for('static', filename='background/kali-prompt-16x9.jpg') }}"></a>
 
                     </div>
                     <label> draw with us</label>
@@ -151,7 +153,7 @@
                 </div>
             </div>
 
-            
+
         </div>
     </div>
 
@@ -187,46 +189,7 @@
 
 
 
-    <footer class="footsy">
-        <div class="row">
-            <div class="col-3">
-                <h1>company</h1>
-                <ul>
-                    <li>about</li>
-                    <li>blogs</li>
-                    <li>carees</li>
-                </ul>
 
-            </div>
-            <div class="col-3">
-                <h1>company</h1>
-                <ul>
-                    <li>about</li>
-                    <li>blogs</li>
-                    <li>carees</li>
-                </ul>
-
-            </div>
-            <div class="col-3">
-                <h1>company</h1>
-                <ul>
-                    <li>about</li>
-                    <li>blogs</li>
-                    <li>carees</li>
-                </ul>
-
-            </div>
-            <div class="col-3">
-                <h1>company</h1>
-                <ul>
-                    <li>about</li>
-                    <li>blogs</li>
-                    <li>carees</li>
-                </ul>
-
-            </div>
-        </div>
-    </footer>
     <script>
         function dropdownmenu() {
             var dropdown = document.getElementById('dropdownclick');
@@ -244,52 +207,9 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
-</body>
-
-</html>
-<html lang="en">
-
-<head>
-    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='style.css')}}">
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        {% if title %}
-        <title> RENT -{{ title }}</title>
-        {% else %}
-        <title> lit REnTMs </title>
-        {% endif %}
-    </head>
-</head>
-
-<body>
-    <nav>
-        <ul class="topnav" id="dropdownclick">
-            <li><a href="{{ url_for('main.Home')}}">Home</a></li>
-            <li><a href="{{ url_for('main.manage')}}">Manage</a></li>
-            <li><a href="{{ url_for('main.about')}}">About</a></li>
-            {% if current_user.is_authenticated %}
-            <li class="topnav-right"><a href="{{ url_for('posts.new_post')}}" onclick="">new post</a></li>
-            <li class="topnav-right"><a href="{{ url_for('main.users')}}" onclick="">users</a></li>
-            <li class="topnav-right"><a href="{{ url_for('users.account')}}" onclick="">Account</a></li>
-            <li class="topnav-right"><a href="{{ url_for('users.logout')}}" onclick="">logout</a></li>
-            {% else %}
-            <li class="topnav-right"><a href="{{ url_for('users.register')}}"><span
-                        class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-            <li class="topnav-right"><a href="{{ url_for('users.login')}}" onclick=""><span
-                        class="glyphicon glyphicon-log-in"></span>login</a></li>
 
 
-            {% endif %}
-            <li class="dropdownicon"><a href="javascript:void(0)" onclick="dropdownmenu()">&#9776;</a></li>
-        </ul>
-    </nav>
+
     <main role="main" class="container">
         <div class="row">
             <div class="col-2">
@@ -309,128 +229,51 @@
 
     </main>
     <div class="container">
-      
+
     </div>
     <div class="container" id="sec1-gradient">
         <div class="row">
-            <div class="col-5">
-                <h1 class="larger">litmus</h1>
-                <h1 class="larger">rent app</h1>
-                <p1>The Rent App is a simple Flask web application that allows users to keep track of their rent
-                    payments. It provides basic rent management functionalities and can be easily extended to support
-                    more advanced features</p1>
-            </div>
-            <div class="col-5">
-                <form>
-                </form>
-            </div>
-
-        </div>
-    </div>
-    <div class="row" id="sec1-gradient">
-        <div class="col-3 leftside-col">
-            To run the Rent App, follow these steps:<br>
-
-            Clone the repository from GitHub.<br>
-            Create a virtual environment and activate it.<br>
-            Install the required dependencies using the command pip install -r requirements.txt.<br>
-            Set the environment variable FLASK_APP to run.py.<br>
-            Initialize the database using the command flask db upgrade.<br>
-            Start the server using the command flask run
-        </div>
-        <div class="col-6 rightside-col">
-            <div>
-                <iframe width="560" height="315" src="http://127.0.0.1:5000//rent/new" title="YouTube video player"
-                    frameborder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    allowfullscreen></iframe>
-
-            </div>
-
-        </div>
-    </div>
-    <header>
-        <h1 class="sec2header"> Destiny , place for awesomeness</h1>
-    </header>
-    <div class=" Destiny">
-        <div class="row">
-            <div class="col-3">
-                <a href="#">
-                    <div class="box  img">
-                        <div class="icon">
-                            <a href="{{ url_for('main.Home') }}"> <img class="roundend-circle  account-img_sm"
-                                    src="{{ url_for('static', filename='background/kali-prompt-16x9.jpg') }}"></a>
-
-                        </div>
-                        <label> STAY WITH US</label>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus dolore iste, ex vero
-                            molestias velit hic suscipit necessitatibus fugit. Et natus eligendi dolore ullam doloribus!
-                            In
-                            delectus assumenda et dolorem!</p>
-                    </div>
-                </a>
-            </div>
-            <div class="col-3">
-                <a href="#">
-                    <div class="box img">
-                        <div class="icon">
-                            <img class="roundend-circle  account-img_sm"
-                                src="{{ url_for('static', filename='background/kali-prompt-16x9.jpg') }}">
-
-                        </div>
-                        <label> draw with us</label>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus dolore iste, ex vero
-                            molestias velit hic suscipit necessitatibus fugit. Et natus eligendi dolore ullam doloribus!
-                            In
-                            delectus assumenda et dolorem!</p>
-                    </div>
-                </a>
-            </div>
-
-
-            <div class="col-3">
-                <a href="#">
-                    <div class="box img">
-                        <div class="icon ">
-                            <img height="250" width="300"
-                                src="{{ url_for('static', filename='background/kali-prompt-16x9.jpg') }}">
-
-                        </div>
-                        <label> draw with us</label>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus dolore iste, ex vero
-                            molestias velit hic suscipit necessitatibus fugit. Et natus eligendi dolore ullam doloribus!
-                            In
-                            delectus assumenda et dolorem!</p>
-                    </div>
-                </a>
-            </div>
-            <div class="col-3">
-                <a href="#">
-                    <div class="box img">
-                        <div class="icon">
-                            <img height="250" width="300"
-                                src="{{ url_for('static' , filename= 'background/kali-red-sticker-16x9.jpg') }}"
-                                alt="sphere">
-
-                        </div>
-                        <label> draw with us</label>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus dolore iste, ex vero
-                            molestias velit hic suscipit necessitatibus fugit. Et natus eligendi dolore ullam doloribus!
-                            In
-                            delectus assumenda et dolorem!</p>
-                    </div>
-                </a>
-            </div>
-
-
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-12">
-            <button class="learnmore">learn more</button>
-        </div>
-    </div>
+            <div class="col-12">
+                
+            
+                
+               
+            
+                <h2>Vacant Appartments</h2>
+                <p>Book your room now</p>
+                
+                <div class="slideshow-container">
+                
+                <div class="mySlides fade">
+                  <div class="numbertext">1 / 3</div>
+                  <img src="{{ url_for('static' , filename= 'background/kali-red-sticker-16x9.jpg') }}" style="width:80%">
+                  <div class="text">room 12</div>
+                </div>
+                
+                <div class="mySlides fade">
+                  <div class="numbertext">2 / 3</div>
+                  <img src="{{ url_for('static' , filename= 'background/skywallpaper.jpeg') }}" style="width:70%">
+                  <div class="text">Appartment Two</div>
+                </div>
+                
+                <div class="mySlides fade">
+                  <div class="numbertext">3 / 3</div>
+                  <img src="{{ url_for('static', filename='background/kali-prompt-16x9.jpg') }}" style="width:60%">
+                  <div class="text">Mansion Three</div>
+                </div>
+                
+                </div>
+                <br>
+                
+                <div style="text-align:center">
+                  <span class="dot"></span> 
+                  <span class="dot"></span> 
+                  <span class="dot"></span> 
+                </div>
+                
+                
+                
+            
     <hr>
     <div class="container">
         <div class="row">
@@ -462,50 +305,103 @@
             <div class="col-3">
                 <h1>contact us</h1>
                 <ul>
-                    <a href="#"><li>email </li> </a>
-                    <a href="#"><li>contact</li> </a>
-                    <a href="#"><li>toll free line</li> </a>
+                    <a href="#">
+                        <li>email </li>
+                    </a>
+                    <a href="#">
+                        <li>contact</li>
+                    </a>
+                    <a href="#">
+                        <li>toll free line</li>
+                    </a>
                 </ul>
             </div>
             <div class="col-3">
                 <h1>company</h1>
                 <ul>
-                    <a href="#"><li>about</li> </a>
-                    <a href="#"><li>blogs</li> </a>
-                    <a href="#"><li>carees</li> </a>
+                    <a href="#">
+                        <li>about</li>
+                    </a>
+                    <a href="#">
+                        <li>blogs</li>
+                    </a>
+                    <a href="#">
+                        <li>carees</li>
+                    </a>
                 </ul>
             </div>
             <div class="col-3">
                 <h1>reache us </h1>
                 <ul>
-                    <a href="#"><li>Twitter</li> </a>
-                    <a href="#"><li>Facebook</li> </a>
-                    <a href="#"><li>Instagram</li> </a>
+                    <a href="#">
+                        <li>Twitter</li>
+                    </a>
+                    <a href="#">
+                        <li>Facebook</li>
+                    </a>
+                    <a href="#">
+                        <li>Instagram</li>
+                    </a>
                 </ul>
             </div>
             <div class="col-3">
                 <h1>About us</h1>
                 <ul>
-                    <a href="#"><li>Services</li> </a>
-                    <a href="#"><li>History</li> </a>
-                    <a href="#"><li>Staff</li> </a>
+                    <a href="#">
+                        <li>Services</li>
+                    </a>
+                    <a href="#">
+                        <li>History</li>
+                    </a>
+                    <a href="#">
+                        <li>Staff</li>
+                    </a>
                 </ul>
             </div>
         </div>
     </footer>
+   
+                    
+                
+
+
+
+             
+
+     
     <script>
+        let slideIndex = 0;
+        showSlides();
+        
+        function showSlides() {
+          let i;
+          let slides = document.getElementsByClassName("mySlides");
+          let dots = document.getElementsByClassName("dot");
+          for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";  
+          }
+          slideIndex++;
+          if (slideIndex > slides.length) {slideIndex = 1}    
+          for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" active", "");
+          }
+          slides[slideIndex-1].style.display = "block";  
+          dots[slideIndex-1].className += " active";
+          setTimeout(showSlides, 6000); // Change image every 2 seconds
+        }
         function dropdownmenu() {
             var dropdown = document.getElementById('dropdownclick');
             if (dropdown.className === "topnav") {
                 dropdown.className += "reponsive";/*changes topnav to topnav.responsive***/
-
+                
             }
             else {
                 dropdown.className = "topnav";
             }
-
-
+            
+            
         }
+    
     </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
