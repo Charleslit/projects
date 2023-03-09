@@ -1,46 +1,44 @@
-{% extends "layout.html" %}
+{% extends "base.html" %}
+
 {% block content %}
-
-
-<article class="">
-    <img class="roundend-circle  account-img_sm" src="{{ url_for('static', filename='profile_pics/'+ posts.author.image_file) }}">
-    <div class="media-body">
-        <div class="media-body">
-      <div class="article-metadata">
-        <a class="mr-2" href="{{ url_for('users.user_rent', username = rent_h.tenant.name) }}">{{ rent_h.tenant.username }}</a>
-        <small class="text-muted">{{ rent_h.date.strftime('%Y-%m-%d') }}</small>
-        {% if rent_h.tenant == current_user %}
-          <div>
-            <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{{ url_for('users.user_rent', tenant_id=rent_h.id) }}">Update</a>
-            <button type="button" class="btn btn-danger btn-sm m-1" data-toggle="modal" data-target="#deleteModal">Delete</button>
-          </div>
-        {% endif %}
-      </div>
-      <h2 class="article-title">{{ rent_h.name }}</h2>
-      <p class="article-content">{{ rent_h.amount }}</p>
-    </div>
-</article><!-- Button trigger modal 
-<<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-  Launch demo modal
-</button>
-
-<!-- Modal -->
-<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="deleteModalLabel">Delete Payment?</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <form action="{{ url_for('users.pay_rent', tenant_id=rent_h.id) }}" method="POST">
-            <input class="btn btn-danger" type="submit" value="Delete">
-          </form>
-        </div>
-      </div>
-    </div>
+  <h1 class="mb-4">Manage Rent Payments</h1>
+  <div class="topnav-right">
+    <a href="{{ url_for('main.rent') }}" class="btn btn-primary mr-2">View</a>
+  <a href="{{ url_for('rent.add_rent') }}" class="btn btn-primary mr-2">Add</a>
   </div>
-{% endblock content %}
+  {% for rent_payment in rent_h %}
+    <div class="card mb-3">
+      <div class="card-body">
+        <h5 class="card-title">{{ rent_payment.name }}</h5>
+        <h6 class="card-subtitle mb-2 text-muted">{{ rent_payment.date.strftime('%Y-%m-%d') }}</h6>
+        <p class="card-text">Tenant: <a href="{{ url_for('users.rent', name=rent_payment.tenant.username) }}">{{ rent_payment.tenant.username }}</a></p>
+        <p class="card-text">Amount: {{ rent_payment.amount }}</p>
+        <a href="{{ url_for('rent.update_rent', rent_payment_id=rent_payment.id) }}" class="btn btn-primary mr-2">Edit</a>
+        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal{{ rent_payment.id }}">Delete</button>
+
+        <!-- Delete Modal -->
+        <div class="modal fade" id="deleteModal{{ rent_payment.id }}" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel{{ rent_payment.id }}" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="deleteModalLabel{{ rent_payment.id }}">Delete Rent Payment?</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                Are you sure you want to delete this rent payment for {{ rent_payment.name }}?
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <form action="{{ url_for('rent.delete_rent', rent_payment_id=rent_payment.id) }}" method="POST">
+                  <input class="btn btn-danger" type="submit" value="Delete">
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  {% endfor %}
+{% endblock %}

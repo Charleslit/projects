@@ -7,10 +7,11 @@ footer {
 }
 
 body  {
-    background-image: url("static/background/t-pyqt-pyside-analog-gauge.png");
-
- 
-    background-image: linear-gradient(rgb(145, 145, 214), rgb(190, 197, 229));
+    
+    
+    background-image: url("/static/background/nightly.jpeg") ;
+    background-image: linear-gradient(rgb(255, 255, 255), rgb(233, 233, 233));
+  
     line-height: 1;
     margin: 5px;
 }
@@ -20,6 +21,14 @@ body  {
     padding-top: 4%;
     padding-bottom: 4%;
 
+}
+.containerf{
+    width: 70%;
+    margin: 10px;
+    padding-top: 4%;
+    padding-bottom: 4%;
+    border-radius: 2%;
+   
 }
 /*########custom styles*/
 #sec1-gradient{
@@ -63,8 +72,11 @@ div.box{
     padding: 36 px 24px 40px 24px;
     border-radius: 7px;
     background-color: white;
-    box-shadow: 0 0 0 1px rgba(0,0,0,.15),0 2px 3px 0 rgba(0,0,0,.1);/*ccssmatic.com/box-shadow*/
+    box-shadow: 0 0 0 1px rgba(126, 123, 123, 0.15),0 2px 3px 0 rgba(0,0,0,.1);/*ccssmatic.com/box-shadow*/
 }
+ .img:hover{
+    scale: 1.1;
+ }
 button{
     font-size: 32px;
     font-weight: 700;
