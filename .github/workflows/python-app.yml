@@ -27,15 +27,15 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install flake8 pytest
-        Flask==2.1.4
-        Flask-Bcrypt==0.7.1
-        Flask-Login==0.5.0
-        Flask-Mail==0.9.1
-        Flask-SQLAlchemy==2.5.1
-        Flask-WTF==0.15.1
-        Pillow==9.0.0
-        WTForms==3.0.0
-        itsdangerous==2.1.0
+        pip install Flask==2.1.4
+        pip install Flask-Bcrypt==0.7.1
+        pip install Flask-Login==0.5.0
+        pip install Flask-Mail==0.9.1
+        pip install Flask-SQLAlchemy==2.5.1
+        pip install Flask-WTF==0.15.1
+        Ppip install Pillow==9.0.0
+        pip install WTForms==3.0.0
+        pip install itsdangerous==2.1.0
 
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
     - name: Lint with flake8
