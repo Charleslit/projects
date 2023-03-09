@@ -1,6 +1,5 @@
 from flask import Blueprint, render_template, request
-from rms.models import Post, User, RentPayment
-
+from rms.models import Post, User, RentPayment, Room
 main = Blueprint('main', __name__)
 
 @main.route("/")
@@ -36,7 +35,42 @@ def rent():
         total_rent_paid = user.get_total_rent_paid()
         rent_info.append({'user': user, 'latest_rent_payment': latest_rent_payment, 'balance':balance,'total_rent_paid': total_rent_paid})
     return render_template('rent.html', title='Rent', rent_info=rent_info)
-@main.route('/rooms')
+@main.route('/rooms', methods=['GET', 'POST'])
 def rooms():
+    # Get all the rooms
     rooms = Room.query.all()
-    return render_template('rooms.html', rooms=rooms)
+
+    # Get the number of occupied, vacant, and booked rooms
+    occupied_count = Room.query.filter_by(status='occupied').count()
+    vacant_count = Room.query.filter_by(status='vacant').count()
+    booked_count = Room.query.filter_by(status='booked').count()
+
+    # Check if the form has been submitted
+    if request.method == 'POST':
+        # Get the form data
+        room_number = request.form['room_number']
+        check_in = datetime.strptime(request.form['check_in'], '%Y-%m-%d')
+        check_out = datetime.strptime(request.form['check_out'], '%Y-%m-%d')
+
+        # Check if the room is available for booking
+        room = Room.query.filter_by(room_number=room_number).first()
+        if room.status != 'vacant':
+            flash('This room is not available for booking.', 'danger')
+            return redirect(url_for('rooms'))
+
+        # Create a new booking
+        booking = Booking(room_id=room.id, check_in=check_in, check_out=check_out)
+
+        # Update the room status to booked
+        room.status = 'booked'
+
+        # Add the booking and room status changes to the database
+        db.session.add(booking)
+        db.session.commit()
+
+        # Flash a success message and redirect to the rooms page
+        flash('Your booking has been confirmed!', 'success')
+        return redirect(url_for('rooms'))
+
+    # Render the template with the room data and counts
+    return render_template('rooms.html', rooms=rooms, occupied_count=occupied_count, vacant_count=vacant_count, booked_count=booked_count)

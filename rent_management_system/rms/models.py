@@ -97,3 +97,16 @@ class RentPayment(db.Model):
 
     def __repr__(self):
         return f"RentPayment('{self.amount}', '{self.name}', '{self.date}')"
+
+class Room(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    room_number = db.Column(db.Integer, nullable=False)
+    status = db.Column(db.String(20), nullable=False, default='Vacant')
+    bookings = db.relationship('Booking', backref='room', lazy=True)
+class Booking(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    start_date = db.Column(db.Date, nullable=False)
+    end_date = db.Column(db.Date, nullable=False)
+    room_id = db.Column(db.Integer, db.ForeignKey('room.id'), nullable=False)
+    tenant_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+
